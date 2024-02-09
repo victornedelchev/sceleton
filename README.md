@@ -1,2 +1,2 @@
-# sceleton
-For express-hanlebars applications
+# skeleton
+For express-handlebars applications
