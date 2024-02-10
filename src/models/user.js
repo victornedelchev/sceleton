@@ -4,26 +4,26 @@ const bcrypt = require('bcrypt');
 const userSchema = new mongoose.Schema({
     firstName: {
         type: String,
-        required: [true],
+        required: [true, 'First name is required'],
     },
     lastName: {
         type: String,
-        required: [true],
+        required: [true, 'Last name is required'],
     },
     email: {
         type: String,
-        required: [true],
-        unique: [true, 'Email already exists!'],
+        required: [true, 'Email is required'],
+        unique: [true, 'Email already exists'],
     },
     password: {
         type: String,
-        required: [true],
+        required: [true, 'Password is required'],
     },
 });
 
 userSchema.virtual('rePassword').set(function (value) {
     if (value !== this.password) {
-        throw new Error('Password mismatch!');
+        throw new Error('Password mismatch');
     }
 });
 
