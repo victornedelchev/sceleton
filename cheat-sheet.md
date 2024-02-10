@@ -26,3 +26,22 @@
 11. Add user model
  - simple validation in schema
  - add method for register
+ - create first user record in the db
+ - validate if password mismatch
+ - validate email already exists
+12. Hash password
+ - install bcrypt
+ - hash password
+13. Login
+ - find user by id
+ - validate password with hash
+14. Generate jsonwebtoken
+ - install jsonwebtoken
+ - promisify jsonwebtoken
+ - generate secret
+ - generate token service login
+15. Return token in cookie
+ - install cookie-parser
+ - configure cookie-parser
+ - set cookie with the token
+ 
