@@ -7,7 +7,13 @@ router.get('/register', (req, res) => {
 
 router.post('/register', async (req, res) => {
     const { firstName, lastName, email, password, rePassword } = req.body;
-    await userService.register({ firstName, lastName, email, password, rePassword })
+
+    // if (password !== rePassword) {
+    //     throw new Error('Password mismatch!');
+    // }
+
+    await userService.register({ firstName, lastName, email, password, rePassword });
+
     res.redirect('/users/login');
 });
 
@@ -17,8 +23,10 @@ router.get('/login', (req, res) => {
 
 router.post('/login', (req, res) => {
     const { email, password } = req. body;
+
     res.redirect('/');
-    
 });
+
+// TODO: provide logout endpoint
 
 module.exports = router;

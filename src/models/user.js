@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const userScheme = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     firstName: {
         type: String,
         require: [true],
@@ -12,7 +12,7 @@ const userScheme = new mongoose.Schema({
     email: {
         type: String,
         require: [true],
-        unique: true,
+        unique: [true, 'Email already exists!'],
     },
     password: {
         type: String,
@@ -20,6 +20,13 @@ const userScheme = new mongoose.Schema({
     },
 });
 
-const User = mongoose.model('User', userScheme);
+userSchema.virtual('rePassword').set(function (value) {
+    console.log({ value });
+    if (value !== this.password) {
+        throw new Error('Password mismatch!');
+    }
+});
+
+const User = mongoose.model('User', userSchema);
 
 module.exports = User;
