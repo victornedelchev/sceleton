@@ -61,6 +61,6 @@
  - add error message util  
 20. Show error notification
  - show in the main layout
- - pass error to render
+ - pass error to render in login and register pages
 
  

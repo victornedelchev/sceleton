@@ -13,8 +13,10 @@ router.post('/register', async (req, res) => {
     //     throw new Error('Password mismatch!');
     // }
     try {
-        await userService.register({ firstName, lastName, email, password, rePassword });
-        res.redirect('/users/login');
+        const token = await userService.register({ firstName, lastName, email, password, rePassword });
+        res.cookie('token', token, { httpOnly: true });
+    
+        res.redirect('/');
     } catch (error) {
         const errorMessages = extractErrorMsgs(error);
 
